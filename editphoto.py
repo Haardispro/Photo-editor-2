@@ -15,7 +15,7 @@ root.geometry("800x600")
 root.configure(bg="white")
 
 #Open and save
-open_file = Button(root, text="Open file", command=openfile) 
+open_file = Button(root, text="Open file", command=openfile)
 open_file.grid(row=0, column=0)
 save_file = Button(root, text="Save File")
 
@@ -27,5 +27,7 @@ size = Button(root, text="Select Image size")
 
 dom_col = Button(root, text="Change the dominant color of the image")
 
-
+#Blur
+#Filters
+#Cropping
 root.mainloop()
