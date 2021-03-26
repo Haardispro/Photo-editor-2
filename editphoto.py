@@ -30,4 +30,6 @@ dom_col = Button(root, text="Change the dominant color of the image")
 #Blur
 #Filters
 #Cropping
+#Water Marks
+
 root.mainloop()
