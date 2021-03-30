@@ -1,18 +1,18 @@
-#from PIL import Image
-from tkinter import *
+from PIL import ImageTk, Image
+from tkinter import Label, Button, PhotoImage, Tk
 #import tkinter as tk
 from tkinter import filedialog
 
 #Functions
 def openfile():
-    root.withdraw()
-    filedialog.askopenfilename()
-    root.deiconify()
-
+    file_path = filedialog.askopenfilename()
+    path = ImageTk.PhotoImage(Image.open(file_path))
+    Label(root, image=path) .grid(row=1, column=0)
+    ImageTk.PhotoImage(Image.show())
 root = Tk()
 root.title("Photoeditor")
 root.geometry("800x600")
-root.configure(bg="white")
+root.configure(bg="#222222")
 
 #Open and save
 open_file = Button(root, text="Open file", command=openfile)
