@@ -1,36 +1,26 @@
+from tkinter import *
 from PIL import ImageTk, Image
-from tkinter import Label, Button, PhotoImage, Tk
-#import tkinter as tk
 from tkinter import filedialog
+import os
 
-#Functions
-def openfile():
-    file_path = filedialog.askopenfilename()
-    path = ImageTk.PhotoImage(Image.open(file_path))
-    path.paste(file_path)
-    #Label(root, image=path) .place(x=10, y=10, width=path.size[0], height=path.size[1])
-    #Image.show(path)
 root = Tk()
-root.title("Photoeditor")
-root.geometry("800x600")
-root.configure(bg="#222222")
+#root.geometry("550x300+300+150")
+root.resizable(width=True, height=True)
+root.title("Photo Editor")
 
-#Open and save
-open_file = Button(root, text="Open file", command=openfile)
-open_file.grid(row=0, column=0)
-save_file = Button(root, text="Save File")
+def openfn():
+    filename = filedialog.askopenfilename(title='open')
+    return filename
+def open_img():
+    x = openfn()
+    img = Image.open(x)
+    #img = img.resize((600, 600), Image.ANTIALIAS)
+    img = ImageTk.PhotoImage(img)
+    panel = Label(root, image=img)
+    panel.image = img
+    panel.pack()
 
-#Editing functions
-#---changing the size of the image using thumbnail function
-
-size = Button(root, text="Select Image size")
-#Change dominant color
-
-dom_col = Button(root, text="Change the dominant color of the image")
-
-#Blur
-#Filters
-#Cropping
-#Water Marks
+btn = Button(root, text='open image', command=open_img)
+btn.pack()
 
 root.mainloop()
