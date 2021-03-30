@@ -7,8 +7,9 @@ from tkinter import filedialog
 def openfile():
     file_path = filedialog.askopenfilename()
     path = ImageTk.PhotoImage(Image.open(file_path))
-    Label(root, image=path) .grid(row=1, column=0)
-    ImageTk.PhotoImage(Image.show())
+    path.paste(file_path)
+    #Label(root, image=path) .place(x=10, y=10, width=path.size[0], height=path.size[1])
+    #Image.show(path)
 root = Tk()
 root.title("Photoeditor")
 root.geometry("800x600")
