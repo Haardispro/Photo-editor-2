@@ -1,25 +1,33 @@
-#this is just an experiment file 
-#this is not the final version of the photo editing app
-from PIL import Image, ImageFilter
-from tkinter import Label, Button, PhotoImage, Tk
+from tkinter import *
+from PIL import ImageTk, Image
+from tkinter import filedialog
 import os
-import sys
 
-w = Tk()
-w.geometry("800x600")
-w.title("Photo Editor")
-#Functions
-def blur():
-    im = Image.open(r"C:\Users\haard\OneDrive\Desktop\Python projects\somethinguniques\joystick.png")
-    im_blur = im.filter(ImageFilter.GaussianBlur(5))
-    im_blur.save(r"C:\Users\haard\OneDrive\Desktop\Python projects\somethinguniques\joystick.png")
-    os.execv(sys.argv[0], sys.argv)
 
-main_image = PhotoImage(file=r"C:\Users\haard\OneDrive\Desktop\Python projects\somethinguniques\joystick.png")
-photo = Label(w, image=main_image)
-photo.grid(row=0, column=0, padx=260, pady=110)
+root = Tk()
+root.geometry("550x300+300+150")
+root.resizable(width=True, height=True)
+root.title("Photo Editor")
 
-blur_button = Button(w, text="Blur the image", command = blur)
-blur_button.place(x=10, y=10)
+def openfn():
+    filename = filedialog.askopenfilename(title='open')
+    return filename
+def open_img():
+    x = openfn()
+    img = Image.open(x)
+    #img = img.resize((600, 600), Image.ANTIALIAS)
+    img = ImageTk.PhotoImage(img)
+    panel = Label(root, image=img)
+    panel.image = img
+    panel.pack()
+def blur_btn():
 
-w.mainloop()
+    return
+
+
+btn = Button(root, text='open image', command=open_img)
+btn.pack()
+btn_blur = Button(root, text="blur image", command=blur_btn)
+btn_blur.pack()
+
+root.mainloop()
