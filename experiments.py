@@ -28,9 +28,11 @@ class MainWindow:
         panel.image = image1
         panel.pack()
     def blur_btn(self):
+        """
         blur_img = self.img.filter(ImageFilter.GaussianBlur(5))
         blur_img.show()
-        
+        """
+        return        
 
 root = Tk()
 my_window = MainWindow(root)
